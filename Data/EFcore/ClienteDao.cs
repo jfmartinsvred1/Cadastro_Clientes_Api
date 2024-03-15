@@ -8,6 +8,7 @@ namespace Cadastro_Cliente_Api.Data.EFcore
 {
     public class ClienteDao : IClienteDao
     {
+
         IMapper _mapper;
         SignInManager<Usuario> _signInManager;
         CadastroClienteContext _context;
@@ -19,10 +20,19 @@ namespace Cadastro_Cliente_Api.Data.EFcore
             _context = context;
         }
 
+        public IEnumerable<Cliente> Clientes(string token)
+        {
+            string userUsername = new JwtSecurityToken(token).Claims.FirstOrDefault(c => c.Type == "username").Value;
+            var clientes = _context.Clientes.Where(c=>c.UsuarioUsername == userUsername).ToList().OrderBy(c=>c.Nome);
+            return clientes;
+        }
+
         public void PostCliente(CreateClienteDto dto, string token)
         {
             Cliente cliente = _mapper.Map<Cliente>(dto);
-            var username = new JwtSecurityToken(token).Claims.First().Value;
+
+            string username = new JwtSecurityToken(token).Claims.FirstOrDefault(c => c.Type == "username").Value;
+
             cliente.UsuarioUsername = username;
 
             var user = _signInManager.UserManager.Users.FirstOrDefault(u => u.UserName == cliente.UsuarioUsername);
@@ -39,5 +49,6 @@ namespace Cadastro_Cliente_Api.Data.EFcore
             
 
         }
+
     }
 }
