@@ -30,7 +30,6 @@ namespace Cadastro_Cliente_Api.Data.EFcore
             if (!result.Succeeded) {
                 throw new Exception("Usuario nao cadastrado");
             }
-
         }
 
         public async Task<string> LoginAsync(LoginUsuarioDto dto)
@@ -47,5 +46,7 @@ namespace Cadastro_Cliente_Api.Data.EFcore
             var token = _tokenService.GenerateToken(user);
             return token;
         }
+
+        
     }
 }
