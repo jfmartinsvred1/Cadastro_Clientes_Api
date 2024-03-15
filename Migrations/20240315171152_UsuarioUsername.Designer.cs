@@ -4,6 +4,7 @@ using Cadastro_Cliente_Api.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cadastro_Cliente_Api.Migrations
 {
     [DbContext(typeof(CadastroClienteContext))]
-    partial class CadastroClienteContextModelSnapshot : ModelSnapshot
+    [Migration("20240315171152_UsuarioUsername")]
+    partial class UsuarioUsername
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

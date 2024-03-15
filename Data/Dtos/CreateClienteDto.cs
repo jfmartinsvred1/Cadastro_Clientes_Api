@@ -1,11 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Cadastro_Cliente_Api.Models
+namespace Cadastro_Cliente_Api.Data.Dtos
 {
-    public class Cliente
+    public class CreateClienteDto
     {
-        [Key]
-        public int Id { get; set; }
         public string Nome { get; set; }
         [EmailAddress]
         public string Email { get; set; }
@@ -13,6 +11,6 @@ namespace Cadastro_Cliente_Api.Models
         public string Cep { get; set; }
         [MaxLength(11)]
         public string Cpf { get; set; }
-        public string UsuarioUsername { get; set; }
+        //public string UsuarioUsername { get; set; }
     }
 }

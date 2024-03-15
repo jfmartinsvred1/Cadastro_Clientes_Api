@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using Cadastro_Cliente_Api.Data;
 using Cadastro_Cliente_Api.Data.Dtos;
-using Cadastro_Cliente_Api.Models;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cadastro_Cliente_Api.Controllers
@@ -28,7 +26,7 @@ namespace Cadastro_Cliente_Api.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginUsuarioDto dto)
         {
-           var token = await _usuarioDao.LoginAsync(dto);
+            var token = await _usuarioDao.LoginAsync(dto);
             return Ok(token);
         }
     }
